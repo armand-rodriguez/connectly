@@ -1,0 +1,14 @@
+<h1>Connection Requests</h1>
+
+<% @requests.each do |request| %>
+  <div class="card">
+    <div class="card-title">A request has been sent by <%= request.user.email %></div>
+    <div class="card-body">
+      <%= request.request_message %> <br>
+      <% if request.request_status_id === 1 %>
+        <%= link_to 'Accept Connection', accept_profile_request_path(@profile, request), method: :patch, class: 'btn btn-info' %>
+        <%= link_to 'Reject Connection', reject_profile_request_path(@profile, request), method: :patch, class: 'btn btn-warning' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

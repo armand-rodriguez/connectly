@@ -1,0 +1,19 @@
+<div class="well container" id="chatbox">
+
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <%= message.user.email %> <br>
+      <%= message.body %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= form_with model: [@profile, @profile.messages.build] do |f| %>
+    <div class="field mb-2">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Submit', class: 'btn btn-info' %>
+  <% end %>
+</div>

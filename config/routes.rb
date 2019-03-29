@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'messages/index'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :profiles do
+    resources :requests, only: [:create, :index] do
+      member do
+        patch :accept
+        patch :reject
+      end
+    end
+    resources :messages, only: [:index, :create]
+  end
   get 'static/index'
   root 'static#index'
+  mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
