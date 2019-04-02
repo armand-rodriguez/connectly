@@ -1,0 +1,12 @@
+<div class="container">
+  <% if @accepted_conversations %>
+    <% @accepted_conversations.each do |accepted_conversation| %>
+      <%= link_to accepted_conversation.second_user.email, accepted_conversation %> <span class="badge badge-primary"><%= accepted_conversation.messages.count %> </span><br>
+    <% end %>
+  <% end %>
+  <% if @sent_conversations %>
+    <% @sent_conversations.each do |sent_conversation| %>
+      <%= link_to sent_conversation.user.email, sent_conversation %> <span class="badge badge-primary"><%= sent_conversation.messages.count %></span> <br>
+    <% end %>
+  <% end %>
+</div>

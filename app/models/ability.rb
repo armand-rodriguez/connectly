@@ -14,6 +14,10 @@ class Ability
         can :update, Profile, user_id: user.id
         can :accept, Request, profile_user_id: user.id
         can :accept, Request, profile_user_id: user.id
+        can :read, Conversation do |conversation|
+          conversation.user_id === user.id || conversation.second_user_id === user.id
+        end
+        can :index, Conversation
       end
 
     # The first argument to `can` is the action you are giving the user

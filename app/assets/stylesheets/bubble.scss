@@ -1,0 +1,68 @@
+.bubble {
+  color: white;
+  border-radius: 20px;
+  padding: .5rem;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.bubble-primary {
+  background-color: #88CDE1;
+
+  width: 55%;
+  display: inline-block;
+}
+
+.bubble-secondary {
+  background-color: #D0D0D0;
+  margin-left: 45%;
+  width: 55%;
+  display: inline-block;
+}
+
+///////
+
+.messages-section {
+  padding: 30px;
+}
+
+@media only screen and (min-width: 992px) {
+  #chatbox {
+    width: 60%;
+  }
+  .chatbox-form {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .bubble-primary {
+    width: 50%;
+  }
+  .bubble-secondary {
+    width: 50%;
+    margin-left: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bubble-primary {
+    width: 65%;
+  }
+  .bubble-secondary {
+    width: 65%;
+    margin-left: 35%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .bubble-primary {
+    width: 85%;
+  }
+  .bubble-secondary {
+    width: 85%;
+    margin-left: 15%;
+  }
+}

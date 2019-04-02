@@ -1,0 +1,7 @@
+<div class="messages-section">
+  <% if @messages %>
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+  <% end %>
+</div>

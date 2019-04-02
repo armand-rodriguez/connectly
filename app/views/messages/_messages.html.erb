@@ -1,0 +1,6 @@
+<% if @messages %>
+  <% @messages.each do |message| %>
+    <%= message.user.email %> <br>
+    <%= message.body %>
+  <% end %>
+<% end %>

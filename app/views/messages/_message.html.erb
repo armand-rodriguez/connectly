@@ -1,0 +1,9 @@
+<!-- <div class="card mb-2">
+  <div class="card-body"> -->
+    <%#= message.user.email %> <!-- <br>
+    <%#= message.body %> <br>
+  <!-- </div>
+</div> -->
+<div class="bubble <% if message.user.email === current_user.email %> bubble-primary <% else %> bubble-secondary <% end %>">
+    <%= message.body %>
+</div> <br>

@@ -8,7 +8,10 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
-    resources :messages, only: [:index, :create]
+
+  end
+  resources :conversations do
+    resources :messages
   end
   get 'static/index'
   root 'static#index'

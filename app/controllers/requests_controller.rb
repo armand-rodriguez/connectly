@@ -18,6 +18,8 @@ class RequestsController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @profile_user = @profile.user
     @my_profile_request = Request.where(profile_id: @profile.id, user_id: current_user.id)
+    @my_accepted_friend_connections = FriendConnection.find_by(profile_id: @profile.id, user_id: current_user.id)
+
     if @profile.user_id === @user.id
       flash[:alert] = 'You cannot send a request to yourself'
       redirect_to @profile and return
@@ -25,6 +27,11 @@ class RequestsController < ApplicationController
 
     if @my_profile_request.count > 0
       flash[:alert] = "You've already sent a request to this user"
+      redirect_to @profile and return
+    end
+
+    if @my_accepted_friend_connections
+      flash[:alert] = "You are already friends with #{@profile.user.email}"
       redirect_to @profile and return
     end
 
@@ -47,6 +54,7 @@ class RequestsController < ApplicationController
     @request_sender_profile = @request_sent_by.profile
     @request.update_attributes(request_status_id: 2)
     FriendConnection.create!(user_id: @user.id, second_user_id: @request_sent_by.id, profile_id: @request_sent_by.profile.id, request_id: @request.id)
+    Conversation.create!(user_id: @user.id, second_user_id: @request_sent_by.id, profile_id: @profile.id)
     flash[:notice] = "You just connected with #{@request_sent_by.email}"
     redirect_to profile_path(@request_sender_profile)
   end
