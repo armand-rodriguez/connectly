@@ -38,6 +38,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'cancancan', '~> 2.0'
 gem "font-awesome-rails"
+gem "aws-sdk-s3"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
