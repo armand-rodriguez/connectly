@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/********** Profile Create Page **********/
+
+.image-input input {
+  background-color: black;
+  color: white;
+}
+
+/********** Profile Show Page **********/
+
 .profile-image {
   border-radius: 100%;
+}
+
+
+@media only screen and (max-width: 576px){
+  .profile-about {
+    display: none;
+  }
 }

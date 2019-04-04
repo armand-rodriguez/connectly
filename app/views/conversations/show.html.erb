@@ -1,17 +1,23 @@
-<p>Conversation between x and y</p>
-
-<div class="well container" id="chatbox" data-conversation-id="<%= @conversation.id %>" style="overflow-y: scroll; height: 400px;">
-  <%= render 'messages' %>
-</div>
-
 <div class="container">
-  <div class="chatbox-form">
-    <%= form_with model: [@conversation, @conversation.messages.build] do |f| %>
-      <div class="field mb-2">
-        <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Submit', class: 'btn btn-info' %>
-    <% end %>
+  <% if @conversation.user_id === current_user.id %>
+    <%= @conversation.second_user.user_name %><%= image_tag(@conversation.second_user.profile.thumbnail_cropped, style: 'border-radius: 100%;') %>
+  <% elsif @conversation.second_user_id === current_user.id %>
+    <%= @conversation.user.user_name %><%= image_tag(@conversation.user.profile.thumbnail_cropped, style: 'border-radius: 100%;') %>
+  <% end %>
+
+  <div class="well container" id="chatbox" data-conversation-id="<%= @conversation.id %>" style="overflow-y: scroll; height: 400px; background-color: #d6d6d6; border-radius: 15px;">
+    <%= render 'messages' %>
+  </div>
+
+  <div class="container">
+    <div class="chatbox-form">
+      <%= form_with model: [@conversation, @conversation.messages.build] do |f| %>
+        <div class="field mb-2">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Submit', class: 'btn btn-info' %>
+      <% end %>
+    </div>
   </div>
 </div>

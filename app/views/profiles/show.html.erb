@@ -1,22 +1,25 @@
 <div class="container">
   <div class="mb-5">
     <div class="mb-5">
-      <span class="mr-3"><%= @profile.user.email %></span>
+      <span><%= @profile.user.first_name.titleize %></span>
+      <span class="mr-1"><%= @profile.user.last_name.titleize %></span>
+      <span class="badge badge-dark mr-3">
+        @<%= @profile.user.user_name.titleize %>
+      </span>
       <% if @profile.user_id === current_user.id %>
-        <%= link_to 'Connection Requests', profile_requests_path(@profile), class: 'btn btn-info' %> <% if @total_profile_requests > 0 %> <span class="badge badge-primary"><%= @total_profile_requests %></span> <% end %> 
+        <%= link_to 'Connection Requests', profile_requests_path(@profile), class: 'btn btn-info' %> <% if @total_profile_requests > 0 %> <span class="badge badge-primary"><%= @total_profile_requests %></span> <% end %>
         <%= link_to 'Messages', conversations_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
     <div class="row">
       <div class="col-lg-5 col-sm-8 col-xs-6">
-        <%= @profile.about %> <br>
-        <%= image_tag(@profile.image, class: 'img-fluid profile-image') %> <br>
+        <%= image_tag(@profile.thumbnail_cropped, class: 'img-fluid profile-image mb-4') %> <br> <%= @profile.about %> <br> 
         <% if @profile.user_id != current_user.id %>
             <% if @my_profile_request.count === 0 && @my_accepted_friend_connections == nil %>
               <%= form_for([@profile, @profile.requests.build], local: true) do |f| %>
                 <div class="field">
                   <%= f.label :request_message %>
-                  <%= f.text_field :request_message, class: 'form-control', value: "Hey, nice to meet you. Let's create a connection!" %>
+                  <%= f.text_field :request_message, class: 'form-control mb-3', value: "Hey, nice to meet you. Let's create a connection!" %>
                 </div>
                 <%= f.submit 'Make Connection', class: 'btn btn-info'  %>
               <% end %>
@@ -25,18 +28,14 @@
       </div>
 
       <div class="col-lg-7">
-        friend_connection
-          <p>Lets test the authorizations</p>
-
           <% if @profile.user_id === current_user.id %>
-            <p>I can see this on my own page</p>
             <%= render partial: 'profiles/comment_wall' %>
           <% end  %>
 
           <% if @profile.user_id != current_user.id && @my_profile_request.count > 0 %>
             <% if @my_profile_request_singular.request_status_id === 2 && @my_profile_request_singular.friend_connection.second_user_id === current_user.id %>
 
-                <p>I can see this someone else's page that i have a friend_connection with</p>
+                <!-- If i sent the request -->
                 <%= render partial: 'profiles/comment_wall' %>
 
             <% elsif @my_profile_request_singular.request_status_id === 1  %>
@@ -44,7 +43,7 @@
             <% end %>
           <% end  %>
           <% if @profile.user_id != current_user.id && @my_accepted_friend_connections %>
-            <p>I can see this someone else's page that i have a friend_connection with</p>
+            <!-- If i accepted the request -->
             <%= render partial: 'profiles/comment_wall' %>
           <% end %>
       </div>

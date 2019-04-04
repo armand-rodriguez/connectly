@@ -1,12 +1,20 @@
-<p>new</p>
-<%= form_for([@user.build_profile], local: true ) do |f| %>
-  <div class="field">
-    <%= f.label :about %>
-    <%= f.text_area :about %>
+<div class="row">
+  <div class="offset-lg-4"></div>
+  <div class="col-lg-6 col-xs-12">
+    <h5>Create your profile!</h5>
+    <%= form_for([@user.build_profile], local: true ) do |f| %>
+      <div class="field mb-3">
+        <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us your story...' %>
+      </div>
+      <div class="field mb-3">
+        <strong class="mb-3">Lets get a picture of you!</strong> <br>
+        <div class="image-input">
+          <%= f.file_field :image %>
+        </div>
+
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-info mb-5' %>
+    <% end %>
+
   </div>
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-  <%= f.submit 'Submit' %>
-<% end %>
+</div>

@@ -1,12 +1,14 @@
 <div class="container">
   <% if @accepted_conversations %>
     <% @accepted_conversations.each do |accepted_conversation| %>
-      <%= link_to accepted_conversation.second_user.email, accepted_conversation %> <span class="badge badge-primary"><%= accepted_conversation.messages.count %> </span><br>
+      <%= link_to accepted_conversation.second_user.user_name, accepted_conversation %> <span class="badge badge-primary"><%= accepted_conversation.messages.count %> </span>
+      <%= image_tag(accepted_conversation.second_user.profile.thumbnail_cropped, style: 'border-radius: 100%') %>
     <% end %>
   <% end %>
   <% if @sent_conversations %>
     <% @sent_conversations.each do |sent_conversation| %>
-      <%= link_to sent_conversation.user.email, sent_conversation %> <span class="badge badge-primary"><%= sent_conversation.messages.count %></span> <br>
+      <%= link_to sent_conversation.user.user_name, sent_conversation %> <span class="badge badge-primary"><%= sent_conversation.messages.count %></span>
+      <%= image_tag(accepted_conversation.user.profile.thumbnail_cropped, style: 'border-radius: 100%') %>
     <% end %>
   <% end %>
 </div>

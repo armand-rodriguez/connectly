@@ -11,17 +11,17 @@
 
 .logo-rectangle {
   animation-name: square-widen;
-  animation-duration: 3s;
+  animation-duration: 1500ms;
 }
 
 .logo-letters {
   animation-name: letters-fade-in;
-  animation-duration: 6s;
+  animation-duration: 3000ms;
 }
 
 .logo-letters-2 {
   animation-name: letters-fade-in-2;
-  animation-duration: 3s;
+  animation-duration: 1500ms;
 }
 
 @keyframes square-widen {
@@ -64,12 +64,12 @@
 
 .subtitle-pt1 {
   animation-name: subtitle-pt1;
-  animation-duration: 7s;
+  animation-duration: 3500ms;
 }
 
 .subtitle-pt2 {
   animation-name: subtitle-pt1;
-  animation-duration: 9s;
+  animation-duration: 4500ms;
 }
 
 @keyframes subtitle-pt1 {
@@ -123,7 +123,7 @@
 
 .signUpButton {
   animation-name: signUpButton;
-  animation-duration: 7s;
+  animation-duration: 3500ms;
 }
 
 @keyframes signUpButton {
@@ -178,7 +178,7 @@
 .or {
   opacity: 1;
   animation-name: or;
-  animation-duration: 7s;
+  animation-duration: 3500ms;
 }
 
 @keyframes or {

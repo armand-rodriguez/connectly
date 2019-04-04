@@ -1,7 +1,42 @@
 <div class="card mt-3 mb-3 bg-dark text-white">
   <div class="card-body">
     <span class="mr-1"><%= comment.created_at.strftime("%Y-%m-%d") %></span>
-    <span class="mr-1"><%= link_to comment.user.email, profile_path(comment.user) %></span> <br>
+    <span class="mr-1 badge badge-light">@<%= link_to comment.user.user_name, profile_path(comment.user), class: 'text-dark' %></span>
+    <%= link_to comment_likes_path(comment), method: :post, remote: true do %>
+      <% if comment.likes.where(user_id: current_user.id, liked: true).count > 0 %>
+        <i class="fa fa-heart mr-2 like-button" style="color: red;" onClick="
+                                                                             var color = $(this).css('color');
+                                                                             if (color == 'rgb(255, 0, 0)') {
+                                                                               $(this).css('color', 'white');
+                                                                               var likedCount = parseInt($(this).next().text(), 10) - 1;
+                                                                               $(this).next().text(likedCount);
+                                                                             } else if (color == 'rgb(255, 255, 255)') {
+                                                                               $(this).css('color', 'red');
+                                                                               var likedCount = parseInt($(this).next().text(), 10) + 1;
+                                                                               $(this).next().text(likedCount);
+
+                                                                             }
+                                                                             " ></i>
+      <% else %>
+        <i class="fa fa-heart mr-2 like-button" style="color: white;" onClick="
+                                                                             var color = $(this).css('color');
+                                                                             if (color == 'rgb(255, 0, 0)') {
+                                                                               $(this).css('color', 'white');
+                                                                               var likedCount = parseInt($(this).next().text(), 10) - 1;
+                                                                               $(this).next().text(likedCount);
+                                                                             } else if (color == 'rgb(255, 255, 255)') {
+                                                                               $(this).css('color', 'red');
+                                                                               var likedCount = parseInt($(this).next().text(), 10) + 1;
+                                                                               $(this).next().text(likedCount);
+
+                                                                             };
+                                                                            console.log($(this).next().text());
+
+                                                                             " ></i>
+      <% end %>
+      <span class="badge badge-info"><%= comment.likes.where(liked: true).count %></span><br>
+    <% end %>
+
     <p><%= comment.body %></p>
   </div>
 </div>

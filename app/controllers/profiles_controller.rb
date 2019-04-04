@@ -3,7 +3,14 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @profiles = Profile.all
+    if params[:q]
+      search_term = params[:q]
+      @users = User.where("user_name ilike ?", "%#{search_term}%")
+    else
+      @users = User.order("RANDOM()").limit(10)
+    end
+
+
   end
 
   def show

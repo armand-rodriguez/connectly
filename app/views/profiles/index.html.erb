@@ -1,13 +1,41 @@
-<% @profiles.each do |profile| %>
-  <div class="card">
-    <div class="card-header">
-      <%= profile.user.email %> <br>
-    </div>
-    <div class="card-body">
-      <%= profile.about %> <br>
-      <%= image_tag(profile.image) %>
+<div class="container">
+  <div class="mb-3 row">
+    <div class="col-lg-6 col-xs-12 col-sm-12">
+      <%= form_with(url: profiles_path, method: 'get', local: true) do |f| %>
+        <div class="input-group">
+          <%= f.text_field :q, id: 'q', value: params[:q], placeholder: 'Search Profiles...', class: 'form-control width100 mr-5' %>
+          <span class="input-group-btn">
+            <%= f.submit 'Search', class: 'btn btn-dark' %>
+          </span>
+        </div>
+      <% end %>
     </div>
   </div>
 
 
-<% end %>
+
+    <% @users.each do |user| %>
+      <%= link_to profile_path(user.profile) do %>
+      <div class="card">
+        <div class="card-body bg-dark text-light rounded">
+          <div class="row">
+            <div class="col-lg-1 col-xs-2">
+              <span class="badge badge-light"><%= user.user_name %> </span>
+            </div>
+            <div class="col-lg-2 col-sm-5 col-xs-10">
+              <div class="profile-pic">
+                <%= image_tag(user.profile.thumbnail_cropped, class: 'img-fluid', style: 'border-radius: 100%;') %>
+              </div>
+
+            </div>
+            <div class="col-lg-9 col-sm-6  profile-about">
+              <%= user.profile.about %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+
+</div>

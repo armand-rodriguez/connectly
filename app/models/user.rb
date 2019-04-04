@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :messages
   has_many :friend_connections
   has_many :comments
+  has_many :likes
 end
