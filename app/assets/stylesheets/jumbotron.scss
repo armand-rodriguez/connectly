@@ -1,0 +1,194 @@
+.jumbotron {
+  height: calc(100vh - 56px);
+}
+
+.jumbotron-container {
+  display: flex;
+  justify-content: center;
+}
+
+/********** JUMBOTRON ANIMATION **********/
+
+.logo-rectangle {
+  animation-name: square-widen;
+  animation-duration: 3s;
+}
+
+.logo-letters {
+  animation-name: letters-fade-in;
+  animation-duration: 6s;
+}
+
+.logo-letters-2 {
+  animation-name: letters-fade-in-2;
+  animation-duration: 3s;
+}
+
+@keyframes square-widen {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 184px;
+  }
+}
+
+@keyframes letters-fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes letters-fade-in-2 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/********** SUBTITLE ANIMATION **********/
+
+.subtitle-pt1 {
+  animation-name: subtitle-pt1;
+  animation-duration: 7s;
+}
+
+.subtitle-pt2 {
+  animation-name: subtitle-pt1;
+  animation-duration: 9s;
+}
+
+@keyframes subtitle-pt1 {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  66% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle-pt1 {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/********** JUMBOTRON ANIMATION **********/
+
+.animation-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signUpButton {
+  animation-name: signUpButton;
+  animation-duration: 7s;
+}
+
+@keyframes signUpButton {
+  0% {
+    width: 0;
+    background-color: white;
+    border-color: white;
+  }
+
+  25% {
+    width: 0;
+    background-color: white;
+    border-color: white;
+  }
+  50% {
+    width: 0;
+    background-color: white;
+    border-color: white;
+  }
+  75% {
+    width: 0;
+    background-color: white;
+    border-color: white;
+  }
+  85% {
+    width: 0px;
+    background-color: white;
+    border-color: white;
+  }
+  90% {
+    width: 100px;
+    background-color: black;
+    color: transparent;
+  }
+  100% {
+    color: white;
+  }
+}
+
+/********** JUMBOTRON ANIMATION **********/
+
+@media only screen and (max-width: 768px)  {
+  .subtitle-pt1, .subtitle-pt2 {
+    font-size: 1.2rem;
+  }
+  .jumbotron-container {
+    justify-content: space-around;
+  }
+
+}
+
+.or {
+  opacity: 1;
+  animation-name: or;
+  animation-duration: 7s;
+}
+
+@keyframes or {
+  0% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

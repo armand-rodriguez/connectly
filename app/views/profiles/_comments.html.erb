@@ -1,0 +1,7 @@
+<% if @comments %>
+  <div class="well comment-wall" style="overflow-y: scroll; height: 500px;">
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+<% end %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
-
+    resources :comments, only: [:create]
   end
   resources :conversations do
     resources :messages

@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :requests
   has_many :messages
   has_many :friend_connections
+  has_many :comments
 end

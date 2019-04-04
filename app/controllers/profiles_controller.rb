@@ -13,6 +13,8 @@ class ProfilesController < ApplicationController
     @my_profile_request = Request.where(profile_id: @profile.id, user_id: current_user.id)
     @my_profile_request_singular = Request.find_by(profile_id: @profile.id, user_id: current_user.id)
     @my_accepted_friend_connections = FriendConnection.find_by(profile_id: @profile.id, user_id: current_user.id)
+    @comment = @profile.comments.build
+    @comments = Comment.where(profile_id: @profile.id).order("created_at DESC")
   end
 
   def new

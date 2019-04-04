@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   validate :image_type
   has_many :messages
   has_many :friend_connections
+  has_many :comments
 
   private
 
