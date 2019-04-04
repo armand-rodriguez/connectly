@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'messages/index'
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', confirmations: 'confirmations' }
   resources :profiles do
     resources :requests, only: [:create, :index] do
       member do
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
-    resources :comments, only: [:create] 
+    resources :comments, only: [:create]
   end
   resources :conversations do
     resources :messages
