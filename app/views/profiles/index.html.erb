@@ -13,7 +13,7 @@
   </div>
 
 
-
+  <% if @users.count > 0 %>
     <% @users.each do |user| %>
       <%= link_to profile_path(user.profile) do %>
       <div class="card">
@@ -36,6 +36,10 @@
       </div>
       <% end %>
     <% end %>
+  <% elsif @users.count === 0 %>
+    <p>There are no users with that username.</p>
+  <% end %>
+
 
 
 </div>

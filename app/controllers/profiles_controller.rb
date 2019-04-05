@@ -5,9 +5,9 @@ class ProfilesController < ApplicationController
   def index
     if params[:q]
       search_term = params[:q]
-      @users = User.where("user_name ilike ?", "%#{search_term}%")
+      @users = User.where("user_name ilike ? and registration_status_id = ?", "%#{search_term}%", 2)
     else
-      @users = User.order("RANDOM()").limit(10)
+      @users = User.where(registration_status_id: 2).order("RANDOM()").limit(10)
     end
 
 
