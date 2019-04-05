@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-lg-5 col-sm-8 col-xs-6">
-        <%= image_tag(@profile.thumbnail_cropped, class: 'img-fluid profile-image mb-4') %> <br> <%= @profile.about %> <br> 
+        <%= image_tag(@profile.thumbnail_cropped, class: 'img-fluid profile-image mb-4') %> <br> <div class="card"><div class="card-body"><strong>About Me</strong><hr><br> <%= @profile.about %></div> </div> <br> 
         <% if @profile.user_id != current_user.id %>
             <% if @my_profile_request.count === 0 && @my_accepted_friend_connections == nil %>
               <%= form_for([@profile, @profile.requests.build], local: true) do |f| %>
