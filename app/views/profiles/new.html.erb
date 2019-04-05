@@ -3,6 +3,20 @@
   <div class="col-lg-6 col-xs-12">
     <h5>Create your profile!</h5>
     <%= form_for([@user.build_profile], local: true ) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+        </div>
+        <div class="panel-body">
+          <ul>
+          <% @profile.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
       <div class="field mb-3">
         <%= f.text_area :about, class: 'form-control', placeholder: 'Tell us your story...' %>
       </div>

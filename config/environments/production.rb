@@ -65,7 +65,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'connectly.herokuapp.com' }
+
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -97,4 +97,5 @@ Rails.application.configure do
   config.web_socket_server_url = "wss://connectly.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://connectly.herokuapp.com', 'http://connectly.herokuapp.com']
   config.active_storage.service = :amazon
+  config.action_mailer.default_url_options = { host: 'https://connectly.herokuapp.com' }
 end

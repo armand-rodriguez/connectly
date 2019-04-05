@@ -2,7 +2,10 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :requests
+  validates :about, presence: true
   validate :image_type
+
+
   has_many :messages
   has_many :friend_connections
   has_many :comments
@@ -26,8 +29,12 @@ class Profile < ApplicationRecord
   private
 
   def image_type
-    if !image.content_type.in?(%('image/jpeg image/png'))
-      errors.add(:images, 'needs to be a jpeg or png')
+    if image.attached? === false
+      errors.add(:image, "is missing.")
+    elsif image.attached? === true
+      if !image.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:images, 'needs to be a jpeg or png')
+      end
     end
   end
 end
