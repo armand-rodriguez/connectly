@@ -1,4 +1,5 @@
 <div class="container">
+  <strong data-user-id="<%= current_user.id %>">You Conversation</strong>
   <% if @conversation.user_id === current_user.id %>
     <div class="badge badge-dark"><%= @conversation.second_user.user_name %></div> <%= image_tag(@conversation.second_user.profile.thumbnail_cropped, style: 'border-radius: 100%;') %>
   <% elsif @conversation.second_user_id === current_user.id %>

@@ -1,9 +1,6 @@
-<!-- <div class="card mb-2">
-  <div class="card-body"> -->
-    <%#= message.user.email %> <!-- <br>
-    <%#= message.body %> <br>
-  <!-- </div>
-</div> -->
-<div class="bubble <% if message.profile.user_id === current_user.id %> bubble-primary <% else %> bubble-secondary <% end %>">
+<!-- <div class="bubble <%# if message.profile.user_id === current_user.id %> bubble-primary <%# else %> bubble-secondary <%# end %>">
+    <%#= message.body %>
+</div> <br> -->
+<div class="bubble" data-message-user-id="<%= current_user.id %>" data-message-user2-id="<%= message.user.id %>">
     <%= message.body %>
 </div> <br>
