@@ -25,3 +25,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore devise initializer
+/config/initializers/devise.rb
+
+# Ignore storage.yml
+/config/storage.yml
+
+# Ignore credentials.yml.enc
+/config/credentials.yml.enc

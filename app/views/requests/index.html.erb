@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Connection Requests</h1><%= link_to 'Back to Profile', profile_path(current_user.profile), class: 'btn btn-info' %>
+  <h1>Connection Requests</h1><%= link_to 'Back to Profile', profile_path(current_user.profile), class: 'btn btn-info mb-5' %>
 
   <% @requests.each do |request| %>
     <div class="card bg-dark text-white">
@@ -8,7 +8,7 @@
           A request has been sent by <span class="mr-1"><%= request.user.first_name.titleize %></span><%= request.user.last_name.titleize %>.
         </div>
         <div class="mb-3">
-          <%= image_tag(request.user.profile.image, class: 'img-fluid', style: 'height: 150px; border-radius: 100%;') %>
+          <%= image_tag(request.user.profile.thumbnail_cropped, class: 'img-fluid', style: 'height: 150px; border-radius: 100%;') %>
           <%= request.request_message %> <br>
         </div>
 
